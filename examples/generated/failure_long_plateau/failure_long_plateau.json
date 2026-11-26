@@ -1,0 +1,554 @@
+{
+  "failure_type": "plateau_longer_than_reliable_prior",
+  "selection": {
+    "start": 302,
+    "end": 342,
+    "length": 41
+  },
+  "policy": "同时导出保守最小先验解和带谐波延拓的推测解，不用单一圆滑顶端冒充真值",
+  "solver": {
+    "sample_rate": 8000,
+    "threshold": 0.16,
+    "mode": "auto",
+    "primary_kind": "long_gap_continuation_speculative",
+    "runs": [
+      {
+        "run": {
+          "start": 302,
+          "end": 342,
+          "sign": 1,
+          "length": 41
+        },
+        "long_saturation": true,
+        "reliable_prior_length": 16,
+        "period": {
+          "period_samples": 193,
+          "score": 0.5909495469957042,
+          "candidates": [
+            {
+              "lag": 193,
+              "score": 0.5909495469957042
+            },
+            {
+              "lag": 197,
+              "score": 0.5072631797415179
+            }
+          ]
+        },
+        "prior_bounds": {
+          "sample_upper": [
+            0.25624560826593623,
+            0.543793119490843,
+            0.8313406307157498,
+            1.1188881419406567,
+            1.4064356531655635,
+            1.6939831643904704,
+            1.9815306756153772,
+            2.269078186840284,
+            2.556625698065191,
+            2.8441732092900978,
+            3.1317207205150046,
+            3.4192682317399115,
+            3.7068157429648183,
+            3.994363254189725,
+            4.281910765414632,
+            4.569458276639539,
+            4.857005787864446,
+            5.1445532990893525,
+            5.432100810314259,
+            5.719648321539166,
+            6.007195832764073,
+            5.850723069559111,
+            5.563175558334204,
+            5.275628047109297,
+            4.98808053588439,
+            4.700533024659483,
+            4.412985513434577,
+            4.12543800220967,
+            3.837890490984763,
+            3.550342979759856,
+            3.262795468534949,
+            2.9752479573100423,
+            2.6877004460851355,
+            2.4001529348602286,
+            2.1126054236353218,
+            1.8250579124104152,
+            1.5375104011855083,
+            1.2499628899606015,
+            0.9624153787356946,
+            0.6748678675107878,
+            0.387320356285881
+          ],
+          "peak_upper_prior": 6.007195832764073,
+          "peak_range_observable": [
+            0.16,
+            null
+          ],
+          "peak_range_prior_envelope": [
+            0.16,
+            6.007195832764073
+          ],
+          "hard_prior_envelope_feasible": true,
+          "slew_bound": 0.2875475112249068,
+          "curvature_bound": 0.15320024037124436
+        },
+        "conservative": {
+          "peak": 0.9128259075425292,
+          "optimizer": {
+            "energy": 0.01887278143106707,
+            "iterations": 4000,
+            "converged": false,
+            "stop_reason": "max_iterations",
+            "projected_gradient_inf": 7.170551503676847e-07,
+            "constraint_violation_max": 0.0,
+            "trace": [
+              {
+                "iteration": 3100,
+                "energy": 0.018872783837913,
+                "projected_gradient_inf": 8.693322873787324e-07,
+                "constraint_violation": 0.0,
+                "step": 0.07399246624180114
+              },
+              {
+                "iteration": 3150,
+                "energy": 0.018872783499224128,
+                "projected_gradient_inf": 8.502560870926601e-07,
+                "constraint_violation": 0.0,
+                "step": 0.10647457381992549
+              },
+              {
+                "iteration": 3200,
+                "energy": 0.0188727833490408,
+                "projected_gradient_inf": 8.423916698641065e-07,
+                "constraint_violation": 0.0,
+                "step": 0.10988973089101847
+              },
+              {
+                "iteration": 3250,
+                "energy": 0.01887278324711505,
+                "projected_gradient_inf": 6.567015437441981e-06,
+                "constraint_violation": 0.0,
+                "step": 0.22034360140398107
+              },
+              {
+                "iteration": 3300,
+                "energy": 0.018872783121785197,
+                "projected_gradient_inf": 8.826841392250984e-07,
+                "constraint_violation": 0.0,
+                "step": 0.7895291561587846
+              },
+              {
+                "iteration": 3350,
+                "energy": 0.01887278296503234,
+                "projected_gradient_inf": 7.788979349721004e-06,
+                "constraint_violation": 0.0,
+                "step": 0.03160647600290155
+              },
+              {
+                "iteration": 3400,
+                "energy": 0.01887278280845499,
+                "projected_gradient_inf": 8.143830112494754e-07,
+                "constraint_violation": 0.0,
+                "step": 0.1317421549032871
+              },
+              {
+                "iteration": 3450,
+                "energy": 0.018872782696876,
+                "projected_gradient_inf": 4.332556067576654e-06,
+                "constraint_violation": 0.0,
+                "step": 0.03204728439222575
+              },
+              {
+                "iteration": 3500,
+                "energy": 0.01887278256020562,
+                "projected_gradient_inf": 8.394331765249063e-07,
+                "constraint_violation": 0.0,
+                "step": 0.7051279562281568
+              },
+              {
+                "iteration": 3550,
+                "energy": 0.01887278244120627,
+                "projected_gradient_inf": 7.859040402902195e-07,
+                "constraint_violation": 0.0,
+                "step": 0.0753699250247303
+              },
+              {
+                "iteration": 3600,
+                "energy": 0.018872782359097433,
+                "projected_gradient_inf": 7.149589284938251e-06,
+                "constraint_violation": 0.0,
+                "step": 0.10122237991610118
+              },
+              {
+                "iteration": 3650,
+                "energy": 0.01887278225644215,
+                "projected_gradient_inf": 7.760263075473617e-07,
+                "constraint_violation": 0.0,
+                "step": 0.05343202017603611
+              },
+              {
+                "iteration": 3700,
+                "energy": 0.01887278215704822,
+                "projected_gradient_inf": 6.2925774669819745e-06,
+                "constraint_violation": 0.0,
+                "step": 0.03148389562357146
+              },
+              {
+                "iteration": 3750,
+                "energy": 0.018872781960504043,
+                "projected_gradient_inf": 7.530209946704502e-07,
+                "constraint_violation": 0.0,
+                "step": 0.07062624340152177
+              },
+              {
+                "iteration": 3800,
+                "energy": 0.01887278186705136,
+                "projected_gradient_inf": 8.598540572890556e-07,
+                "constraint_violation": 0.0,
+                "step": 0.03135471168038033
+              },
+              {
+                "iteration": 3850,
+                "energy": 0.018872781740603382,
+                "projected_gradient_inf": 8.175004385657658e-07,
+                "constraint_violation": 0.0,
+                "step": 0.7082850140991864
+              },
+              {
+                "iteration": 3900,
+                "energy": 0.018872781637905352,
+                "projected_gradient_inf": 8.024756858349136e-06,
+                "constraint_violation": 0.0,
+                "step": 0.13901669380994575
+              },
+              {
+                "iteration": 3950,
+                "energy": 0.01887278151269955,
+                "projected_gradient_inf": 8.649822552664332e-07,
+                "constraint_violation": 0.0,
+                "step": 0.03221934383898704
+              },
+              {
+                "iteration": 4000,
+                "energy": 0.01887278143202909,
+                "projected_gradient_inf": 7.178357008807978e-07,
+                "constraint_violation": 0.0,
+                "step": 0.10639421440797144
+              },
+              {
+                "iteration": 4000,
+                "energy": 0.01887278143106707,
+                "projected_gradient_inf": 7.170551503676847e-07,
+                "constraint_violation": 0.0,
+                "stop_reason": "max_iterations"
+              }
+            ],
+            "post_projection_adjustment": 0.0
+          },
+          "boundary": {
+            "max_slope_jump": 0.0569546321053081,
+            "max_boundary_curvature": 0.05695463210530813,
+            "observed_boundary_change": 0.7528259075425292,
+            "continuous_sample_join": true,
+            "value_gap": 0.0
+          },
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          }
+        },
+        "primary_kind": "long_gap_continuation_speculative",
+        "primary_peak": 0.2229741339688263,
+        "primary_optimizer": {
+          "energy": 0.15939576485724782,
+          "iterations": 64,
+          "converged": true,
+          "stop_reason": "projected_gradient_tolerance",
+          "projected_gradient_inf": 2.7072857805565675e-07,
+          "constraint_violation_max": 0.0,
+          "trace": [
+            {
+              "iteration": 1,
+              "energy": 0.17015861898882018,
+              "projected_gradient_inf": 0.3591977117696976,
+              "constraint_violation": 0.0,
+              "step": 0.030599736474133138
+            },
+            {
+              "iteration": 50,
+              "energy": 0.1593957650240424,
+              "projected_gradient_inf": 1.0288658431500952e-05,
+              "constraint_violation": 0.0,
+              "step": 0.03901614153856621
+            },
+            {
+              "iteration": 64,
+              "energy": 0.15939576485724782,
+              "projected_gradient_inf": 2.7072857805565675e-07,
+              "constraint_violation": 0.0,
+              "stop_reason": "projected_gradient_tolerance"
+            }
+          ],
+          "post_projection_adjustment": 0.0
+        },
+        "primary_boundary": {
+          "max_slope_jump": 0.11652933830517605,
+          "max_boundary_curvature": 0.12555460012562386,
+          "observed_boundary_change": 0.06297413396882628,
+          "continuous_sample_join": true,
+          "value_gap": 0.0
+        },
+        "primary_errors": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "template": {
+          "frequencies_hz": [
+            82.03,
+            125.0,
+            218.75,
+            328.12,
+            164.06,
+            441.41,
+            246.09,
+            179.69,
+            660.16,
+            261.72,
+            496.09,
+            480.47,
+            371.09,
+            617.19
+          ],
+          "fit_rmse_unclipped": 0.06942777925136917,
+          "window": [
+            0,
+            1858
+          ],
+          "prior": "8 个以内正弦+余弦项的局部带限/谐波延拓"
+        },
+        "alignment": null,
+        "certified_dual": false,
+        "continuation": {
+          "peak": 0.2229741339688263,
+          "optimizer": {
+            "energy": 0.15939576485724782,
+            "iterations": 64,
+            "converged": true,
+            "stop_reason": "projected_gradient_tolerance",
+            "projected_gradient_inf": 2.7072857805565675e-07,
+            "constraint_violation_max": 0.0,
+            "trace": [
+              {
+                "iteration": 1,
+                "energy": 0.17015861898882018,
+                "projected_gradient_inf": 0.3591977117696976,
+                "constraint_violation": 0.0,
+                "step": 0.030599736474133138
+              },
+              {
+                "iteration": 50,
+                "energy": 0.1593957650240424,
+                "projected_gradient_inf": 1.0288658431500952e-05,
+                "constraint_violation": 0.0,
+                "step": 0.03901614153856621
+              },
+              {
+                "iteration": 64,
+                "energy": 0.15939576485724782,
+                "projected_gradient_inf": 2.7072857805565675e-07,
+                "constraint_violation": 0.0,
+                "stop_reason": "projected_gradient_tolerance"
+              }
+            ],
+            "post_projection_adjustment": 0.0
+          },
+          "boundary": {
+            "max_slope_jump": 0.11652933830517605,
+            "max_boundary_curvature": 0.12555460012562386,
+            "observed_boundary_change": 0.06297413396882628,
+            "continuous_sample_join": true,
+            "value_gap": 0.0
+          },
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          }
+        }
+      }
+    ],
+    "errors": {
+      "reclip_max_error": 0.0,
+      "reclip_mismatch_count": 0,
+      "unclipped_max_error": 0.0
+    },
+    "observed_peak": 0.16,
+    "region_peak_estimate": 0.2229741339688263,
+    "hard_peak_range": [
+      0.16,
+      null
+    ],
+    "prior_peak_range": [
+      0.16,
+      6.007195832764073
+    ],
+    "certified_peak": false,
+    "stop_reason": "projected_gradient_tolerance",
+    "constraint_violation_max": 0.0,
+    "warnings": [
+      "平台 302–342 长度 41 超出可靠先验长度 16；保守解与延拓解必须并列看待"
+    ],
+    "feasibility": {
+      "tolerance": {
+        "reclip_max_error": 2e-05,
+        "unclipped_max_error": 1e-08
+      },
+      "candidates": [
+        {
+          "name": "primary",
+          "feasible": true,
+          "peak": 0.2229741339688263,
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          }
+        },
+        {
+          "name": "conservative",
+          "feasible": true,
+          "peak": 0.9128259075425292,
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          }
+        },
+        {
+          "name": "continuation",
+          "feasible": true,
+          "peak": 0.2229741339688263,
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          }
+        }
+      ],
+      "sampled_feasible_peak_range": [
+        0.2229741339688263,
+        0.9128259075425292
+      ],
+      "note": "只有通过再削波吻合和未削样本等式误差门的候选才计入采样可行区；完整观测峰高上界仍为 +∞"
+    }
+  },
+  "evaluation_only": {
+    "primary": {
+      "true_peak": 1.45,
+      "restored_peak": 0.2229741339688263,
+      "peak_abs_error": 1.2270258660311737,
+      "repair_region_true_peak": 0.8071755642705973,
+      "repair_region_restored_peak": 0.2229741339688263,
+      "repair_region_peak_abs_error": 0.5842014303017711,
+      "prior_peak_range": [
+        0.16,
+        6.007195832764073
+      ],
+      "true_peak_covered_by_prior_range": true,
+      "repair_region_covered_by_prior_range": true,
+      "repair_rmse_before": 0.40142059813422326,
+      "repair_rmse_after": 0.3962129853174571,
+      "repair_rmse_improvement_ratio": 1.0131434683105949,
+      "repair_snr_db": 2.80741135533452,
+      "all_clipped_rmse_before": 0.26248374581060735,
+      "all_clipped_rmse_after": 0.2624163063633275,
+      "clipped_sample_rmse_before": 0.40142059813422326,
+      "clipped_sample_rmse_after": 0.3962129853174571,
+      "rmse_improvement_ratio": 1.0131434683105949,
+      "all_sample_rmse": 0.16615670594203225,
+      "snr_db": 3.769539839673113,
+      "context_log_spectral_distance_db": 21.490935468673687,
+      "log_spectral_distance_db": 59.607938501894715,
+      "reclip": {
+        "reclip_max_error": 0.0,
+        "reclip_mismatch_count": 0,
+        "unclipped_max_error": 0.0
+      },
+      "clean_truth_used_by_solver": false
+    },
+    "conservative": {
+      "true_peak": 1.45,
+      "restored_peak": 0.9128259075425292,
+      "peak_abs_error": 0.5371740924574707,
+      "repair_region_true_peak": 0.8071755642705973,
+      "repair_region_restored_peak": 0.9128259075425292,
+      "repair_region_peak_abs_error": 0.1056503432719319,
+      "prior_peak_range": [
+        0.16,
+        6.007195832764073
+      ],
+      "true_peak_covered_by_prior_range": true,
+      "repair_region_covered_by_prior_range": true,
+      "repair_rmse_before": 0.40142059813422326,
+      "repair_rmse_after": 0.3520338313020749,
+      "repair_rmse_improvement_ratio": 1.140289831376378,
+      "repair_snr_db": 3.8342974070738807,
+      "all_clipped_rmse_before": 0.26248374581060735,
+      "all_clipped_rmse_after": 0.26187898412364324,
+      "clipped_sample_rmse_before": 0.40142059813422326,
+      "clipped_sample_rmse_after": 0.3520338313020749,
+      "rmse_improvement_ratio": 1.140289831376378,
+      "all_sample_rmse": 0.1658164843505747,
+      "snr_db": 3.787343254628901,
+      "context_log_spectral_distance_db": 20.305888282934685,
+      "log_spectral_distance_db": 59.59489409689775,
+      "reclip": {
+        "reclip_max_error": 0.0,
+        "reclip_mismatch_count": 0,
+        "unclipped_max_error": 0.0
+      },
+      "clean_truth_used_by_solver": false
+    },
+    "continuation": {
+      "true_peak": 1.45,
+      "restored_peak": 0.2229741339688263,
+      "peak_abs_error": 1.2270258660311737,
+      "repair_region_true_peak": 0.8071755642705973,
+      "repair_region_restored_peak": 0.2229741339688263,
+      "repair_region_peak_abs_error": 0.5842014303017711,
+      "prior_peak_range": [
+        0.16,
+        6.007195832764073
+      ],
+      "true_peak_covered_by_prior_range": true,
+      "repair_region_covered_by_prior_range": true,
+      "repair_rmse_before": 0.40142059813422326,
+      "repair_rmse_after": 0.3962129853174571,
+      "repair_rmse_improvement_ratio": 1.0131434683105949,
+      "repair_snr_db": 2.80741135533452,
+      "all_clipped_rmse_before": 0.26248374581060735,
+      "all_clipped_rmse_after": 0.2624163063633275,
+      "clipped_sample_rmse_before": 0.40142059813422326,
+      "clipped_sample_rmse_after": 0.3962129853174571,
+      "rmse_improvement_ratio": 1.0131434683105949,
+      "all_sample_rmse": 0.16615670594203225,
+      "snr_db": 3.769539839673113,
+      "context_log_spectral_distance_db": 21.490935468673687,
+      "log_spectral_distance_db": 59.607938501894715,
+      "reclip": {
+        "reclip_max_error": 0.0,
+        "reclip_mismatch_count": 0,
+        "unclipped_max_error": 0.0
+      },
+      "clean_truth_used_by_solver": false
+    }
+  },
+  "audio": {
+    "clipped": "failure_long_plateau/long_clipped.f32.wav",
+    "conservative": "failure_long_plateau/long_conservative.f32.wav",
+    "continuation": "failure_long_plateau/long_continuation_speculative.f32.wav",
+    "clean_evaluation_only": "failure_long_plateau/long_clean_evaluation_only.f32.wav"
+  }
+}

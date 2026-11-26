@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "declipper-prototype"
+version = "0.1.0"
+description = "Constrained hard-clipping reconstruction prototype with a mastering audition panel"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+declipper = "declipper.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["declipper*"]
+
+[tool.setuptools.package-data]
+declipper = ["web/*.html", "web/*.js", "web/*.css"]

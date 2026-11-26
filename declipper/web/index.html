@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>削波重建母带试听面板</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>削波重建母带试听面板</h1>
+      <p>已知对称硬阈值 · 未削样本等式约束 · 饱和区不等式与明确先验 · 所有声音均由本地 Python 求解器实际导出</p>
+    </div>
+    <div class="entry">
+      <span>图形入口</span>
+      <code>python -m declipper panel</code>
+    </div>
+  </header>
+
+  <div id="errorBanner" class="error-banner" hidden></div>
+
+  <main class="layout">
+    <section class="card controls-card">
+      <div class="control-grid">
+        <label>演示轨道
+          <select id="trackSelect"></select>
+        </label>
+        <label>削波阈值 T
+          <input id="thresholdInput" type="number" min="0.001" step="0.01" value="0.34" />
+        </label>
+        <label>求解策略
+          <select id="modeSelect">
+            <option value="auto">自动 / 长平台并列保守与延拓</option>
+            <option value="conservative">保守最小先验</option>
+            <option value="continuation">谐波延拓（推测）</option>
+            <option value="dual">双轨约束</option>
+          </select>
+        </label>
+        <label class="check">
+          <input id="secondaryCheck" type="checkbox" />
+          使用未削副麦
+        </label>
+        <label class="check">
+          <input id="forceAlignmentCheck" type="checkbox" />
+          强制歧义时延（未认证）
+        </label>
+        <label class="check">
+          <input id="normalizeCheck" type="checkbox" />
+          安全响度归一
+        </label>
+        <label>目标 RMS dB
+          <input id="targetRmsInput" type="number" step="1" value="-16" />
+        </label>
+        <button id="restoreBtn" class="primary">恢复框选削波区</button>
+      </div>
+      <div class="file-row">
+        <label class="file-button">打开自己的 WAV
+          <input id="wavFile" type="file" accept=".wav,audio/wav" hidden />
+        </label>
+        <label class="file-button">载入副麦 WAV
+          <input id="secondaryFile" type="file" accept=".wav,audio/wav" hidden />
+        </label>
+        <button id="periodCheckBtn" class="ghost">运行周期偏移/响度安全检查</button>
+        <span id="fileStatus" class="file-status"></span>
+      </div>
+    </section>
+
+    <section class="card waveform-card">
+      <div class="card-title-row">
+        <h2>1. 框选削波区</h2>
+        <span id="selectionInfo" class="pill">尚未选择</span>
+      </div>
+      <canvas id="waveform" class="waveform" height="240"></canvas>
+      <p class="hint">在波形上按住指针拖选；阈值线为 ±T。求解器会自动扩展到完整连续平台，并单独检查边界衔接。</p>
+      <div id="warningList" class="warning-list"></div>
+    </section>
+
+    <aside class="card metrics-card">
+      <h2>求解与可证明性</h2>
+      <dl id="metricsGrid" class="metrics-grid">
+        <div><dt>状态</dt><dd id="mStatus">等待运算</dd></div>
+        <div><dt>停止原因</dt><dd id="mStop">—</dd></div>
+        <div><dt>迭代次数</dt><dd id="mIterations">—</dd></div>
+        <div><dt>最大约束违反</dt><dd id="mViolation">—</dd></div>
+        <div><dt>再削波最大误差</dt><dd id="mReclip">—</dd></div>
+        <div><dt>未削样本误差</dt><dd id="mUnclipped">—</dd></div>
+        <div><dt>误差门可行候选</dt><dd id="mFeasible">—</dd></div>
+        <div><dt>采样可行峰区</dt><dd id="mFeasiblePeakRange">—</dd></div>
+        <div><dt>点估计峰高</dt><dd id="mPeak">—</dd></div>
+        <div><dt>观测可证明范围</dt><dd id="mHardRange">—</dd></div>
+        <div><dt>先验峰高包络</dt><dd id="mPriorRange">—</dd></div>
+        <div><dt>双轨认证</dt><dd id="mCertified">—</dd></div>
+        <div><dt>时延对齐</dt><dd id="mAlignment">—</dd></div>
+        <div><dt>边界最大曲率</dt><dd id="mBoundary">—</dd></div>
+      </dl>
+    </aside>
+
+    <section class="card result-card">
+      <div class="card-title-row">
+        <h2>2. 重建波形与声音对照</h2>
+        <div id="candidateButtons" class="candidate-buttons"></div>
+      </div>
+      <canvas id="resultCanvas" class="waveform result" height="260"></canvas>
+      <div class="audio-grid">
+        <div class="audio-box">
+          <h3>削波原声 A</h3>
+          <audio id="audioA" controls preload="metadata"></audio>
+        </div>
+        <div class="audio-box">
+          <h3 id="audioBTitle">重建 B（实际导出）</h3>
+          <audio id="audioB" controls preload="metadata"></audio>
+          <a id="downloadRestored" download="restored.f32.wav">下载当前 WAV 母带</a>
+        </div>
+      </div>
+      <div id="normalizePanel" class="normalize-panel" hidden></div>
+    </section>
+
+    <section class="card reports-card">
+      <h2>评估、周期歧义与失败样例</h2>
+      <div class="report-buttons">
+        <button data-report="evaluation" class="ghost">不同削波程度评估（真值仅评估）</button>
+        <button data-report="period" class="ghost">周期偏移传给响度归一器</button>
+        <button data-report="ambiguous" class="ghost">失败样例：时延不可识别</button>
+        <button data-report="long" class="ghost">失败样例：超长平台保守/延拓双解</button>
+      </div>
+      <div id="reportOutput" class="report-output">
+        <p>这些报告由 <code>python -m declipper demo</code> 实际生成。干净波形不进入求解器，只用于事后误差与听感代理评估。</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

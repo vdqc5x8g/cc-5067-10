@@ -1,0 +1,93 @@
+{
+  "failure_type": "ambiguous_delay_one_period_alternatives",
+  "policy": "不得导出认证的双轨单解；只能返回单轨峰高范围，或由用户强制时延并标记未认证",
+  "alignment": {
+    "status": "ambiguous_delay",
+    "reason": "periodic_or_near_periodic_delay_alternatives",
+    "shift": 61,
+    "gain": 1.1112044705310047,
+    "certified": false,
+    "best": {
+      "shift": 61,
+      "ncc": 0.9999942146303841,
+      "gain": 1.1112044705310047,
+      "rmse": 0.0005230743040601088,
+      "pairs": 350
+    },
+    "ambiguous_with": {
+      "shift": -19,
+      "ncc": 0.999994158500275,
+      "gain": 1.1111548520869898,
+      "rmse": 0.0005256056256569192,
+      "pairs": 350
+    },
+    "period": {
+      "period_samples": 80,
+      "score": 1.0,
+      "candidates": [
+        {
+          "lag": 80,
+          "score": 1.0
+        },
+        {
+          "lag": 120,
+          "score": 0.9999999999999999
+        },
+        {
+          "lag": 200,
+          "score": 0.9999999999999998
+        },
+        {
+          "lag": 240,
+          "score": 0.9999999999999996
+        }
+      ]
+    },
+    "candidates": [
+      {
+        "shift": 61,
+        "ncc": 0.9999942146303841,
+        "gain": 1.1112044705310047,
+        "rmse": 0.0005230743040601088,
+        "pairs": 350
+      },
+      {
+        "shift": -19,
+        "ncc": 0.999994158500275,
+        "gain": 1.1111548520869898,
+        "rmse": 0.0005256056256569192,
+        "pairs": 350
+      },
+      {
+        "shift": 101,
+        "ncc": 0.9999941152572482,
+        "gain": 1.111152816536632,
+        "rmse": 0.0005275474902468469,
+        "pairs": 350
+      },
+      {
+        "shift": 21,
+        "ncc": 0.9999941065811151,
+        "gain": 1.1111572742183695,
+        "rmse": 0.0005279362389634607,
+        "pairs": 350
+      },
+      {
+        "shift": 141,
+        "ncc": 0.9999940248475311,
+        "gain": 1.111128772883094,
+        "rmse": 0.0005315844960150182,
+        "pairs": 350
+      }
+    ],
+    "coverage": 0.992375,
+    "analysis_window": [
+      3500,
+      4500
+    ]
+  },
+  "single_track_peak_range_observable": [
+    0.3,
+    null
+  ]
+}

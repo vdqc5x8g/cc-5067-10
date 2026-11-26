@@ -1,0 +1,777 @@
+{
+  "manifest": {
+    "sample_rate": 8000,
+    "threshold": 0.34,
+    "graphical_entry": "python -m declipper panel  # http://127.0.0.1:8765",
+    "identical_plateau_constructed": true,
+    "plateau_sample_count": 8,
+    "tracks": [
+      {
+        "id": "amber-low-peak",
+        "title": "Amber 低峰值弦音",
+        "clipped_url": "amber-low-peak.clipped.f32.wav",
+        "restored_url": "amber-low-peak.single_track_restored.f32.wav",
+        "clean_evaluation_url": "amber-low-peak.clean_evaluation_only.f32.wav",
+        "selection": {
+          "start": 204,
+          "end": 211
+        },
+        "plateau_values": [
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34
+        ],
+        "single_track": {
+          "region_peak_estimate": 0.606621260162162,
+          "hard_peak_range": [
+            0.34,
+            null
+          ],
+          "prior_peak_range": [
+            0.34,
+            1.840806200048653
+          ],
+          "primary_kind": "minimum_effort_constrained",
+          "warnings": [],
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "stop_reason": "projected_gradient_tolerance"
+        }
+      },
+      {
+        "id": "silver-high-peak",
+        "title": "Silver 高峰值弦音（含未削副麦）",
+        "clipped_url": "silver-high-peak.clipped.f32.wav",
+        "restored_url": "silver-high-peak.single_track_restored.f32.wav",
+        "clean_evaluation_url": "silver-high-peak.clean_evaluation_only.f32.wav",
+        "selection": {
+          "start": 204,
+          "end": 211
+        },
+        "plateau_values": [
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34,
+          0.34
+        ],
+        "single_track": {
+          "region_peak_estimate": 0.74704413210831,
+          "hard_peak_range": [
+            0.34,
+            null
+          ],
+          "prior_peak_range": [
+            0.34,
+            2.8415655513756546
+          ],
+          "primary_kind": "minimum_effort_constrained",
+          "warnings": [],
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "stop_reason": "projected_gradient_tolerance"
+        },
+        "dual_url": "silver-high-peak.dual_restored.f32.wav",
+        "dual": {
+          "region_peak_estimate": 1.1755144745580162,
+          "certified_peak": true,
+          "stop_reason": "projected_gradient_tolerance"
+        },
+        "secondary_url": "silver-high-peak.unclipped_secondary.f32.wav",
+        "alignment": {
+          "status": "identified",
+          "reason": "unique_correlation_peak",
+          "shift": 57,
+          "gain": 1.2493494584990446,
+          "certified": true,
+          "best": {
+            "shift": 57,
+            "ncc": 0.99993456245247,
+            "gain": 1.2493494584990446,
+            "rmse": 0.0020919634958292306,
+            "pairs": 430
+          },
+          "ambiguous_with": null,
+          "period": {
+            "period_samples": 145,
+            "score": 0.9500571066068035,
+            "candidates": [
+              {
+                "lag": 145,
+                "score": 0.9500571066068035
+              },
+              {
+                "lag": 218,
+                "score": 0.4446409097742468
+              }
+            ]
+          },
+          "candidates": [
+            {
+              "shift": 57,
+              "ncc": 0.99993456245247,
+              "gain": 1.2493494584990446,
+              "rmse": 0.0020919634958292306,
+              "pairs": 430
+            },
+            {
+              "shift": 202,
+              "ncc": 0.8537538305751506,
+              "gain": 0.8232625040895629,
+              "rmse": 0.09521403766126979,
+              "pairs": 430
+            },
+            {
+              "shift": -88,
+              "ncc": 0.8087471782734327,
+              "gain": 1.092592262610429,
+              "rmse": 0.10967963844014583,
+              "pairs": 357
+            },
+            {
+              "shift": 347,
+              "ncc": 0.7500298495439595,
+              "gain": 0.6899964380084633,
+              "rmse": 0.12094822683517988,
+              "pairs": 430
+            },
+            {
+              "shift": -234,
+              "ncc": 0.6162916973590569,
+              "gain": 0.7291471232114587,
+              "rmse": 0.1444496372832239,
+              "pairs": 260
+            }
+          ],
+          "coverage": 0.9947222222222222,
+          "analysis_window": [
+            0,
+            627
+          ]
+        }
+      }
+    ],
+    "evaluation_report_url": "generated/evaluation/evaluation_report.json",
+    "period_offset_report_url": "generated/period_offset/period_offset_check.json",
+    "failure_ambiguous_delay_url": "generated/failure_ambiguous_delay/failure_ambiguous_delay.json",
+    "failure_long_plateau_url": "generated/failure_long_plateau/failure_long_plateau.json"
+  },
+  "evaluation": {
+    "note": "干净波形仅在 evaluate_restoration 中用于事后评估，不进入 restore_signal",
+    "items": [
+      {
+        "threshold": 0.55,
+        "selection": {
+          "start": 204,
+          "end": 211
+        },
+        "metrics": {
+          "true_peak": 1.18,
+          "restored_peak": 0.650375350891239,
+          "peak_abs_error": 0.529624649108761,
+          "repair_region_true_peak": 1.18,
+          "repair_region_restored_peak": 0.650375350891239,
+          "repair_region_peak_abs_error": 0.529624649108761,
+          "prior_peak_range": [
+            0.55,
+            2.097690686718919
+          ],
+          "true_peak_covered_by_prior_range": true,
+          "repair_region_covered_by_prior_range": true,
+          "repair_rmse_before": 0.46182913115922525,
+          "repair_rmse_after": 0.3939392492947755,
+          "repair_rmse_improvement_ratio": 1.1723359172410093,
+          "repair_snr_db": 8.042382948509971,
+          "all_clipped_rmse_before": 0.1961161517379761,
+          "all_clipped_rmse_after": 0.19168819026025363,
+          "clipped_sample_rmse_before": 0.46182913115922525,
+          "clipped_sample_rmse_after": 0.3939392492947755,
+          "rmse_improvement_ratio": 1.1723359172410093,
+          "all_sample_rmse": 0.026280371396387007,
+          "snr_db": 16.415775039434635,
+          "context_log_spectral_distance_db": 5.892328935529514,
+          "log_spectral_distance_db": 20.793117593567548,
+          "reclip": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "clean_truth_used_by_solver": false
+        },
+        "solver_summary": {
+          "primary_kind": "minimum_effort_constrained",
+          "warnings": [],
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "prior_peak_range": [
+            0.55,
+            2.097690686718919
+          ],
+          "stop_reason": "projected_gradient_tolerance"
+        },
+        "audio": {
+          "clipped": "evaluation/degree_t0.55_clipped.f32.wav",
+          "restored": "evaluation/degree_t0.55_restored.f32.wav",
+          "clean_evaluation_only": "evaluation/degree_t0.55_clean_evaluation_only.f32.wav"
+        }
+      },
+      {
+        "threshold": 0.4,
+        "selection": {
+          "start": 204,
+          "end": 211
+        },
+        "metrics": {
+          "true_peak": 1.18,
+          "restored_peak": 0.7294560492847544,
+          "peak_abs_error": 0.45054395071524556,
+          "repair_region_true_peak": 1.18,
+          "repair_region_restored_peak": 0.7294560492847544,
+          "repair_region_peak_abs_error": 0.45054395071524556,
+          "prior_peak_range": [
+            0.4,
+            2.5194165618757287
+          ],
+          "true_peak_covered_by_prior_range": true,
+          "repair_region_covered_by_prior_range": true,
+          "repair_rmse_before": 0.5241885481971144,
+          "repair_rmse_after": 0.28785588679604585,
+          "repair_rmse_improvement_ratio": 1.8210103466409808,
+          "repair_snr_db": 9.826759977258728,
+          "all_clipped_rmse_before": 0.21830897872996574,
+          "all_clipped_rmse_after": 0.21099558144290526,
+          "clipped_sample_rmse_before": 0.5241885481971144,
+          "clipped_sample_rmse_after": 0.28785588679604585,
+          "rmse_improvement_ratio": 1.8210103466409808,
+          "all_sample_rmse": 0.04489685422138305,
+          "snr_db": 11.764086758818983,
+          "context_log_spectral_distance_db": 5.39988247486272,
+          "log_spectral_distance_db": 26.746185597438828,
+          "reclip": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "clean_truth_used_by_solver": false
+        },
+        "solver_summary": {
+          "primary_kind": "minimum_effort_constrained",
+          "warnings": [],
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "prior_peak_range": [
+            0.4,
+            2.5194165618757287
+          ],
+          "stop_reason": "projected_gradient_tolerance"
+        },
+        "audio": {
+          "clipped": "evaluation/degree_t0.40_clipped.f32.wav",
+          "restored": "evaluation/degree_t0.40_restored.f32.wav",
+          "clean_evaluation_only": "evaluation/degree_t0.40_clean_evaluation_only.f32.wav"
+        }
+      },
+      {
+        "threshold": 0.27,
+        "selection": {
+          "start": 204,
+          "end": 211
+        },
+        "metrics": {
+          "true_peak": 1.18,
+          "restored_peak": 0.8191905465282987,
+          "peak_abs_error": 0.36080945347170124,
+          "repair_region_true_peak": 1.18,
+          "repair_region_restored_peak": 0.8191905465282987,
+          "repair_region_peak_abs_error": 0.36080945347170124,
+          "prior_peak_range": [
+            0.27,
+            2.5967540215518814
+          ],
+          "true_peak_covered_by_prior_range": true,
+          "repair_region_covered_by_prior_range": true,
+          "repair_rmse_before": 0.5730459820666088,
+          "repair_rmse_after": 0.1974027521053428,
+          "repair_rmse_improvement_ratio": 2.9029280288899226,
+          "repair_snr_db": 12.287762617585226,
+          "all_clipped_rmse_before": 0.2237791521700084,
+          "all_clipped_rmse_after": 0.21783215776093556,
+          "clipped_sample_rmse_before": 0.5730459820666088,
+          "clipped_sample_rmse_after": 0.1974027521053428,
+          "rmse_improvement_ratio": 2.9029280288899226,
+          "all_sample_rmse": 0.06958264174518139,
+          "snr_db": 7.958386748461145,
+          "context_log_spectral_distance_db": 7.255804003492692,
+          "log_spectral_distance_db": 30.813200464034853,
+          "reclip": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "clean_truth_used_by_solver": false
+        },
+        "solver_summary": {
+          "primary_kind": "minimum_effort_constrained",
+          "warnings": [],
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "prior_peak_range": [
+            0.27,
+            2.5967540215518814
+          ],
+          "stop_reason": "projected_gradient_tolerance"
+        },
+        "audio": {
+          "clipped": "evaluation/degree_t0.27_clipped.f32.wav",
+          "restored": "evaluation/degree_t0.27_restored.f32.wav",
+          "clean_evaluation_only": "evaluation/degree_t0.27_clean_evaluation_only.f32.wav"
+        }
+      },
+      {
+        "threshold": 0.16,
+        "selection": {
+          "start": 204,
+          "end": 211
+        },
+        "metrics": {
+          "true_peak": 1.18,
+          "restored_peak": 0.7460896666828425,
+          "peak_abs_error": 0.43391033331715745,
+          "repair_region_true_peak": 1.18,
+          "repair_region_restored_peak": 0.7460896666828425,
+          "repair_region_peak_abs_error": 0.43391033331715745,
+          "prior_peak_range": [
+            0.16,
+            2.1780291015654063
+          ],
+          "true_peak_covered_by_prior_range": true,
+          "repair_region_covered_by_prior_range": true,
+          "repair_rmse_before": 0.667718144077503,
+          "repair_rmse_after": 0.2488412970856904,
+          "repair_rmse_improvement_ratio": 2.683309209112381,
+          "repair_snr_db": 10.276377551341229,
+          "all_clipped_rmse_before": 0.2173918414636194,
+          "all_clipped_rmse_after": 0.21362709354959447,
+          "clipped_sample_rmse_before": 0.667718144077503,
+          "clipped_sample_rmse_after": 0.2488412970856904,
+          "rmse_improvement_ratio": 2.683309209112381,
+          "all_sample_rmse": 0.09998890773801512,
+          "snr_db": 4.809368522842385,
+          "context_log_spectral_distance_db": 8.340452702045296,
+          "log_spectral_distance_db": 36.16145764591559,
+          "reclip": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "clean_truth_used_by_solver": false
+        },
+        "solver_summary": {
+          "primary_kind": "minimum_effort_constrained",
+          "warnings": [],
+          "errors": {
+            "reclip_max_error": 0.0,
+            "reclip_mismatch_count": 0,
+            "unclipped_max_error": 0.0
+          },
+          "prior_peak_range": [
+            0.16,
+            2.1780291015654063
+          ],
+          "stop_reason": "projected_gradient_tolerance"
+        },
+        "audio": {
+          "clipped": "evaluation/degree_t0.16_clipped.f32.wav",
+          "restored": "evaluation/degree_t0.16_restored.f32.wav",
+          "clean_evaluation_only": "evaluation/degree_t0.16_clean_evaluation_only.f32.wav"
+        }
+      }
+    ]
+  },
+  "period_offset_check": {
+    "scenario": "强制选择偏移一个弦音宏观周期的副麦时延，并把该错误选择传给响度归一器",
+    "selection": {
+      "start": 333,
+      "end": 340,
+      "length": 8
+    },
+    "correct_alignment": {
+      "status": "identified",
+      "reason": "unique_correlation_peak",
+      "shift": 57,
+      "gain": 1.2495583695508365,
+      "certified": true,
+      "best": {
+        "shift": 57,
+        "ncc": 0.9999352690342426,
+        "gain": 1.2495583695508365,
+        "rmse": 0.002086858656212652,
+        "pairs": 518
+      },
+      "ambiguous_with": null,
+      "period": {
+        "period_samples": 145,
+        "score": 0.9532514714835564,
+        "candidates": [
+          {
+            "lag": 145,
+            "score": 0.9532514714835564
+          },
+          {
+            "lag": 73,
+            "score": 0.42374113396472884
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "shift": 57,
+          "ncc": 0.9999352690342426,
+          "gain": 1.2495583695508365,
+          "rmse": 0.002086858656212652,
+          "pairs": 518
+        },
+        {
+          "shift": 202,
+          "ncc": 0.8613784571507509,
+          "gain": 0.8596154434916633,
+          "rmse": 0.09316691775305917,
+          "pairs": 518
+        },
+        {
+          "shift": -88,
+          "ncc": 0.8328762002244822,
+          "gain": 1.0791775535318295,
+          "rmse": 0.10316340236239063,
+          "pairs": 445
+        },
+        {
+          "shift": 347,
+          "ncc": 0.7540633591086364,
+          "gain": 0.7162223040442899,
+          "rmse": 0.12046566405873535,
+          "pairs": 518
+        },
+        {
+          "shift": -234,
+          "ncc": 0.6538163090828081,
+          "gain": 0.7178183238563858,
+          "rmse": 0.13929551006003396,
+          "pairs": 348
+        }
+      ],
+      "coverage": 0.9947222222222222,
+      "analysis_window": [
+        0,
+        756
+      ]
+    },
+    "wrong_alignment": {
+      "status": "forced_unverified",
+      "reason": "caller_forced_shift_peak_is_not_certified",
+      "shift": 202,
+      "gain": 0.886230272840277,
+      "certified": false,
+      "best": {
+        "shift": 202,
+        "ncc": 0.86762155449542,
+        "gain": 0.886230272840277,
+        "rmse": 0.09180339344483818,
+        "pairs": 583
+      },
+      "candidates": [
+        {
+          "shift": 202,
+          "ncc": 0.86762155449542,
+          "gain": 0.886230272840277,
+          "rmse": 0.09180339344483818,
+          "pairs": 583
+        }
+      ],
+      "coverage": 0.9812962962962963
+    },
+    "period_samples_added": 145,
+    "wrong_reconstructed_peak": 0.6048267236352216,
+    "true_peak_evaluation_only": 1.18,
+    "naive_normalizer": {
+      "policy": "naive_point_estimate",
+      "input_rms_db": -17.03172929164379,
+      "target_rms_db": -16.0,
+      "loudness_gain": 1.1261246490519232,
+      "gain": 1.1261246490519232,
+      "gain_db": 1.031729291643788,
+      "peak_estimate_used": 0.6048267236352216,
+      "believed_headroom_db": 4.191902078573155,
+      "certified_headroom_db": 4.191902078573155,
+      "uses_uncertain_peak_as_headroom": true,
+      "peak_certified": false,
+      "warning": "仅用于对照：把单点先验峰高误当成已证明的真实余量"
+    },
+    "guarded_normalizer": {
+      "policy": "guarded",
+      "status": "peak_uncertain_boost_blocked",
+      "input_rms_db": -17.03172929164379,
+      "target_rms_db": -16.0,
+      "loudness_gain": 1.1261246490519232,
+      "gain": 1.0,
+      "gain_db": 0.0,
+      "candidate_peak": 0.6048267236352216,
+      "speculative_peak_estimate": 0.6048267236352216,
+      "naive_believed_headroom_db": 4.191902078573155,
+      "certified_headroom_db": null,
+      "uses_uncertain_peak_as_headroom": false,
+      "peak_certified": false,
+      "requested_boost_db": 1.031729291643788,
+      "boost_blocked_db": 1.031729291643788,
+      "warning": "峰高未被观测或已认证副麦证明；禁止把先验峰高对应的余量用于正向增益"
+    },
+    "evaluation_of_naive_gain_on_truth": {
+      "gained_true_peak": 1.3288270858812694,
+      "samples_over_ceiling": 19,
+      "samples_over_digital_full_scale": 15,
+      "naive_mistook_estimate_for_real_margin": true
+    },
+    "checks": {
+      "guarded_did_not_certify_headroom": true,
+      "guarded_blocked_positive_makeup": true,
+      "guarded_did_not_use_unknown_peak_as_margin": true
+    },
+    "audio": {
+      "wrong_restored": "period_offset/wrong_period_alignment_restored.f32.wav",
+      "naive_master": "period_offset/naive_loudness_master.f32.wav",
+      "guarded_master": "period_offset/guarded_loudness_master.f32.wav"
+    }
+  },
+  "ambiguous_delay": {
+    "failure_type": "ambiguous_delay_one_period_alternatives",
+    "policy": "不得导出认证的双轨单解；只能返回单轨峰高范围，或由用户强制时延并标记未认证",
+    "alignment": {
+      "status": "ambiguous_delay",
+      "reason": "periodic_or_near_periodic_delay_alternatives",
+      "shift": 61,
+      "gain": 1.1112044705310047,
+      "certified": false,
+      "best": {
+        "shift": 61,
+        "ncc": 0.9999942146303841,
+        "gain": 1.1112044705310047,
+        "rmse": 0.0005230743040601088,
+        "pairs": 350
+      },
+      "ambiguous_with": {
+        "shift": -19,
+        "ncc": 0.999994158500275,
+        "gain": 1.1111548520869898,
+        "rmse": 0.0005256056256569192,
+        "pairs": 350
+      },
+      "period": {
+        "period_samples": 80,
+        "score": 1.0,
+        "candidates": [
+          {
+            "lag": 80,
+            "score": 1.0
+          },
+          {
+            "lag": 120,
+            "score": 0.9999999999999999
+          },
+          {
+            "lag": 200,
+            "score": 0.9999999999999998
+          },
+          {
+            "lag": 240,
+            "score": 0.9999999999999996
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "shift": 61,
+          "ncc": 0.9999942146303841,
+          "gain": 1.1112044705310047,
+          "rmse": 0.0005230743040601088,
+          "pairs": 350
+        },
+        {
+          "shift": -19,
+          "ncc": 0.999994158500275,
+          "gain": 1.1111548520869898,
+          "rmse": 0.0005256056256569192,
+          "pairs": 350
+        },
+        {
+          "shift": 101,
+          "ncc": 0.9999941152572482,
+          "gain": 1.111152816536632,
+          "rmse": 0.0005275474902468469,
+          "pairs": 350
+        },
+        {
+          "shift": 21,
+          "ncc": 0.9999941065811151,
+          "gain": 1.1111572742183695,
+          "rmse": 0.0005279362389634607,
+          "pairs": 350
+        },
+        {
+          "shift": 141,
+          "ncc": 0.9999940248475311,
+          "gain": 1.111128772883094,
+          "rmse": 0.0005315844960150182,
+          "pairs": 350
+        }
+      ],
+      "coverage": 0.992375,
+      "analysis_window": [
+        3500,
+        4500
+      ]
+    },
+    "single_track_peak_range_observable": [
+      0.3,
+      null
+    ]
+  },
+  "long_plateau": {
+    "failure_type": "plateau_longer_than_reliable_prior",
+    "selection": {
+      "start": 302,
+      "end": 342,
+      "length": 41
+    },
+    "policy": "同时导出保守最小先验解和带谐波延拓的推测解，不用单一圆滑顶端冒充真值",
+    "evaluation_only": {
+      "primary": {
+        "true_peak": 1.45,
+        "restored_peak": 0.2229741339688263,
+        "peak_abs_error": 1.2270258660311737,
+        "repair_region_true_peak": 0.8071755642705973,
+        "repair_region_restored_peak": 0.2229741339688263,
+        "repair_region_peak_abs_error": 0.5842014303017711,
+        "prior_peak_range": [
+          0.16,
+          6.007195832764073
+        ],
+        "true_peak_covered_by_prior_range": true,
+        "repair_region_covered_by_prior_range": true,
+        "repair_rmse_before": 0.40142059813422326,
+        "repair_rmse_after": 0.3962129853174571,
+        "repair_rmse_improvement_ratio": 1.0131434683105949,
+        "repair_snr_db": 2.80741135533452,
+        "all_clipped_rmse_before": 0.26248374581060735,
+        "all_clipped_rmse_after": 0.2624163063633275,
+        "clipped_sample_rmse_before": 0.40142059813422326,
+        "clipped_sample_rmse_after": 0.3962129853174571,
+        "rmse_improvement_ratio": 1.0131434683105949,
+        "all_sample_rmse": 0.16615670594203225,
+        "snr_db": 3.769539839673113,
+        "context_log_spectral_distance_db": 21.490935468673687,
+        "log_spectral_distance_db": 59.607938501894715,
+        "reclip": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "clean_truth_used_by_solver": false
+      },
+      "conservative": {
+        "true_peak": 1.45,
+        "restored_peak": 0.9128259075425292,
+        "peak_abs_error": 0.5371740924574707,
+        "repair_region_true_peak": 0.8071755642705973,
+        "repair_region_restored_peak": 0.9128259075425292,
+        "repair_region_peak_abs_error": 0.1056503432719319,
+        "prior_peak_range": [
+          0.16,
+          6.007195832764073
+        ],
+        "true_peak_covered_by_prior_range": true,
+        "repair_region_covered_by_prior_range": true,
+        "repair_rmse_before": 0.40142059813422326,
+        "repair_rmse_after": 0.3520338313020749,
+        "repair_rmse_improvement_ratio": 1.140289831376378,
+        "repair_snr_db": 3.8342974070738807,
+        "all_clipped_rmse_before": 0.26248374581060735,
+        "all_clipped_rmse_after": 0.26187898412364324,
+        "clipped_sample_rmse_before": 0.40142059813422326,
+        "clipped_sample_rmse_after": 0.3520338313020749,
+        "rmse_improvement_ratio": 1.140289831376378,
+        "all_sample_rmse": 0.1658164843505747,
+        "snr_db": 3.787343254628901,
+        "context_log_spectral_distance_db": 20.305888282934685,
+        "log_spectral_distance_db": 59.59489409689775,
+        "reclip": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "clean_truth_used_by_solver": false
+      },
+      "continuation": {
+        "true_peak": 1.45,
+        "restored_peak": 0.2229741339688263,
+        "peak_abs_error": 1.2270258660311737,
+        "repair_region_true_peak": 0.8071755642705973,
+        "repair_region_restored_peak": 0.2229741339688263,
+        "repair_region_peak_abs_error": 0.5842014303017711,
+        "prior_peak_range": [
+          0.16,
+          6.007195832764073
+        ],
+        "true_peak_covered_by_prior_range": true,
+        "repair_region_covered_by_prior_range": true,
+        "repair_rmse_before": 0.40142059813422326,
+        "repair_rmse_after": 0.3962129853174571,
+        "repair_rmse_improvement_ratio": 1.0131434683105949,
+        "repair_snr_db": 2.80741135533452,
+        "all_clipped_rmse_before": 0.26248374581060735,
+        "all_clipped_rmse_after": 0.2624163063633275,
+        "clipped_sample_rmse_before": 0.40142059813422326,
+        "clipped_sample_rmse_after": 0.3962129853174571,
+        "rmse_improvement_ratio": 1.0131434683105949,
+        "all_sample_rmse": 0.16615670594203225,
+        "snr_db": 3.769539839673113,
+        "context_log_spectral_distance_db": 21.490935468673687,
+        "log_spectral_distance_db": 59.607938501894715,
+        "reclip": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "clean_truth_used_by_solver": false
+      }
+    },
+    "audio": {
+      "clipped": "failure_long_plateau/long_clipped.f32.wav",
+      "conservative": "failure_long_plateau/long_conservative.f32.wav",
+      "continuation": "failure_long_plateau/long_continuation_speculative.f32.wav",
+      "clean_evaluation_only": "failure_long_plateau/long_clean_evaluation_only.f32.wav"
+    }
+  }
+}

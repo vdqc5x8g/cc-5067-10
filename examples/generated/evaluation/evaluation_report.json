@@ -1,0 +1,241 @@
+{
+  "note": "干净波形仅在 evaluate_restoration 中用于事后评估，不进入 restore_signal",
+  "items": [
+    {
+      "threshold": 0.55,
+      "selection": {
+        "start": 204,
+        "end": 211
+      },
+      "metrics": {
+        "true_peak": 1.18,
+        "restored_peak": 0.650375350891239,
+        "peak_abs_error": 0.529624649108761,
+        "repair_region_true_peak": 1.18,
+        "repair_region_restored_peak": 0.650375350891239,
+        "repair_region_peak_abs_error": 0.529624649108761,
+        "prior_peak_range": [
+          0.55,
+          2.097690686718919
+        ],
+        "true_peak_covered_by_prior_range": true,
+        "repair_region_covered_by_prior_range": true,
+        "repair_rmse_before": 0.46182913115922525,
+        "repair_rmse_after": 0.3939392492947755,
+        "repair_rmse_improvement_ratio": 1.1723359172410093,
+        "repair_snr_db": 8.042382948509971,
+        "all_clipped_rmse_before": 0.1961161517379761,
+        "all_clipped_rmse_after": 0.19168819026025363,
+        "clipped_sample_rmse_before": 0.46182913115922525,
+        "clipped_sample_rmse_after": 0.3939392492947755,
+        "rmse_improvement_ratio": 1.1723359172410093,
+        "all_sample_rmse": 0.026280371396387007,
+        "snr_db": 16.415775039434635,
+        "context_log_spectral_distance_db": 5.892328935529514,
+        "log_spectral_distance_db": 20.793117593567548,
+        "reclip": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "clean_truth_used_by_solver": false
+      },
+      "solver_summary": {
+        "primary_kind": "minimum_effort_constrained",
+        "warnings": [],
+        "errors": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "prior_peak_range": [
+          0.55,
+          2.097690686718919
+        ],
+        "stop_reason": "projected_gradient_tolerance"
+      },
+      "audio": {
+        "clipped": "evaluation/degree_t0.55_clipped.f32.wav",
+        "restored": "evaluation/degree_t0.55_restored.f32.wav",
+        "clean_evaluation_only": "evaluation/degree_t0.55_clean_evaluation_only.f32.wav"
+      }
+    },
+    {
+      "threshold": 0.4,
+      "selection": {
+        "start": 204,
+        "end": 211
+      },
+      "metrics": {
+        "true_peak": 1.18,
+        "restored_peak": 0.7294560492847544,
+        "peak_abs_error": 0.45054395071524556,
+        "repair_region_true_peak": 1.18,
+        "repair_region_restored_peak": 0.7294560492847544,
+        "repair_region_peak_abs_error": 0.45054395071524556,
+        "prior_peak_range": [
+          0.4,
+          2.5194165618757287
+        ],
+        "true_peak_covered_by_prior_range": true,
+        "repair_region_covered_by_prior_range": true,
+        "repair_rmse_before": 0.5241885481971144,
+        "repair_rmse_after": 0.28785588679604585,
+        "repair_rmse_improvement_ratio": 1.8210103466409808,
+        "repair_snr_db": 9.826759977258728,
+        "all_clipped_rmse_before": 0.21830897872996574,
+        "all_clipped_rmse_after": 0.21099558144290526,
+        "clipped_sample_rmse_before": 0.5241885481971144,
+        "clipped_sample_rmse_after": 0.28785588679604585,
+        "rmse_improvement_ratio": 1.8210103466409808,
+        "all_sample_rmse": 0.04489685422138305,
+        "snr_db": 11.764086758818983,
+        "context_log_spectral_distance_db": 5.39988247486272,
+        "log_spectral_distance_db": 26.746185597438828,
+        "reclip": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "clean_truth_used_by_solver": false
+      },
+      "solver_summary": {
+        "primary_kind": "minimum_effort_constrained",
+        "warnings": [],
+        "errors": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "prior_peak_range": [
+          0.4,
+          2.5194165618757287
+        ],
+        "stop_reason": "projected_gradient_tolerance"
+      },
+      "audio": {
+        "clipped": "evaluation/degree_t0.40_clipped.f32.wav",
+        "restored": "evaluation/degree_t0.40_restored.f32.wav",
+        "clean_evaluation_only": "evaluation/degree_t0.40_clean_evaluation_only.f32.wav"
+      }
+    },
+    {
+      "threshold": 0.27,
+      "selection": {
+        "start": 204,
+        "end": 211
+      },
+      "metrics": {
+        "true_peak": 1.18,
+        "restored_peak": 0.8191905465282987,
+        "peak_abs_error": 0.36080945347170124,
+        "repair_region_true_peak": 1.18,
+        "repair_region_restored_peak": 0.8191905465282987,
+        "repair_region_peak_abs_error": 0.36080945347170124,
+        "prior_peak_range": [
+          0.27,
+          2.5967540215518814
+        ],
+        "true_peak_covered_by_prior_range": true,
+        "repair_region_covered_by_prior_range": true,
+        "repair_rmse_before": 0.5730459820666088,
+        "repair_rmse_after": 0.1974027521053428,
+        "repair_rmse_improvement_ratio": 2.9029280288899226,
+        "repair_snr_db": 12.287762617585226,
+        "all_clipped_rmse_before": 0.2237791521700084,
+        "all_clipped_rmse_after": 0.21783215776093556,
+        "clipped_sample_rmse_before": 0.5730459820666088,
+        "clipped_sample_rmse_after": 0.1974027521053428,
+        "rmse_improvement_ratio": 2.9029280288899226,
+        "all_sample_rmse": 0.06958264174518139,
+        "snr_db": 7.958386748461145,
+        "context_log_spectral_distance_db": 7.255804003492692,
+        "log_spectral_distance_db": 30.813200464034853,
+        "reclip": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "clean_truth_used_by_solver": false
+      },
+      "solver_summary": {
+        "primary_kind": "minimum_effort_constrained",
+        "warnings": [],
+        "errors": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "prior_peak_range": [
+          0.27,
+          2.5967540215518814
+        ],
+        "stop_reason": "projected_gradient_tolerance"
+      },
+      "audio": {
+        "clipped": "evaluation/degree_t0.27_clipped.f32.wav",
+        "restored": "evaluation/degree_t0.27_restored.f32.wav",
+        "clean_evaluation_only": "evaluation/degree_t0.27_clean_evaluation_only.f32.wav"
+      }
+    },
+    {
+      "threshold": 0.16,
+      "selection": {
+        "start": 204,
+        "end": 211
+      },
+      "metrics": {
+        "true_peak": 1.18,
+        "restored_peak": 0.7460896666828425,
+        "peak_abs_error": 0.43391033331715745,
+        "repair_region_true_peak": 1.18,
+        "repair_region_restored_peak": 0.7460896666828425,
+        "repair_region_peak_abs_error": 0.43391033331715745,
+        "prior_peak_range": [
+          0.16,
+          2.1780291015654063
+        ],
+        "true_peak_covered_by_prior_range": true,
+        "repair_region_covered_by_prior_range": true,
+        "repair_rmse_before": 0.667718144077503,
+        "repair_rmse_after": 0.2488412970856904,
+        "repair_rmse_improvement_ratio": 2.683309209112381,
+        "repair_snr_db": 10.276377551341229,
+        "all_clipped_rmse_before": 0.2173918414636194,
+        "all_clipped_rmse_after": 0.21362709354959447,
+        "clipped_sample_rmse_before": 0.667718144077503,
+        "clipped_sample_rmse_after": 0.2488412970856904,
+        "rmse_improvement_ratio": 2.683309209112381,
+        "all_sample_rmse": 0.09998890773801512,
+        "snr_db": 4.809368522842385,
+        "context_log_spectral_distance_db": 8.340452702045296,
+        "log_spectral_distance_db": 36.16145764591559,
+        "reclip": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "clean_truth_used_by_solver": false
+      },
+      "solver_summary": {
+        "primary_kind": "minimum_effort_constrained",
+        "warnings": [],
+        "errors": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "prior_peak_range": [
+          0.16,
+          2.1780291015654063
+        ],
+        "stop_reason": "projected_gradient_tolerance"
+      },
+      "audio": {
+        "clipped": "evaluation/degree_t0.16_clipped.f32.wav",
+        "restored": "evaluation/degree_t0.16_restored.f32.wav",
+        "clean_evaluation_only": "evaluation/degree_t0.16_clean_evaluation_only.f32.wav"
+      }
+    }
+  ]
+}

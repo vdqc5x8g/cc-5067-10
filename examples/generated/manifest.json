@@ -1,0 +1,171 @@
+{
+  "sample_rate": 8000,
+  "threshold": 0.34,
+  "graphical_entry": "python -m declipper panel  # http://127.0.0.1:8765",
+  "identical_plateau_constructed": true,
+  "plateau_sample_count": 8,
+  "tracks": [
+    {
+      "id": "amber-low-peak",
+      "title": "Amber 低峰值弦音",
+      "clipped_url": "amber-low-peak.clipped.f32.wav",
+      "restored_url": "amber-low-peak.single_track_restored.f32.wav",
+      "clean_evaluation_url": "amber-low-peak.clean_evaluation_only.f32.wav",
+      "selection": {
+        "start": 204,
+        "end": 211
+      },
+      "plateau_values": [
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34
+      ],
+      "single_track": {
+        "region_peak_estimate": 0.606621260162162,
+        "hard_peak_range": [
+          0.34,
+          null
+        ],
+        "prior_peak_range": [
+          0.34,
+          1.840806200048653
+        ],
+        "primary_kind": "minimum_effort_constrained",
+        "warnings": [],
+        "errors": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "stop_reason": "projected_gradient_tolerance"
+      }
+    },
+    {
+      "id": "silver-high-peak",
+      "title": "Silver 高峰值弦音（含未削副麦）",
+      "clipped_url": "silver-high-peak.clipped.f32.wav",
+      "restored_url": "silver-high-peak.single_track_restored.f32.wav",
+      "clean_evaluation_url": "silver-high-peak.clean_evaluation_only.f32.wav",
+      "selection": {
+        "start": 204,
+        "end": 211
+      },
+      "plateau_values": [
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34,
+        0.34
+      ],
+      "single_track": {
+        "region_peak_estimate": 0.74704413210831,
+        "hard_peak_range": [
+          0.34,
+          null
+        ],
+        "prior_peak_range": [
+          0.34,
+          2.8415655513756546
+        ],
+        "primary_kind": "minimum_effort_constrained",
+        "warnings": [],
+        "errors": {
+          "reclip_max_error": 0.0,
+          "reclip_mismatch_count": 0,
+          "unclipped_max_error": 0.0
+        },
+        "stop_reason": "projected_gradient_tolerance"
+      },
+      "dual_url": "silver-high-peak.dual_restored.f32.wav",
+      "dual": {
+        "region_peak_estimate": 1.1755144745580162,
+        "certified_peak": true,
+        "stop_reason": "projected_gradient_tolerance"
+      },
+      "secondary_url": "silver-high-peak.unclipped_secondary.f32.wav",
+      "alignment": {
+        "status": "identified",
+        "reason": "unique_correlation_peak",
+        "shift": 57,
+        "gain": 1.2493494584990446,
+        "certified": true,
+        "best": {
+          "shift": 57,
+          "ncc": 0.99993456245247,
+          "gain": 1.2493494584990446,
+          "rmse": 0.0020919634958292306,
+          "pairs": 430
+        },
+        "ambiguous_with": null,
+        "period": {
+          "period_samples": 145,
+          "score": 0.9500571066068035,
+          "candidates": [
+            {
+              "lag": 145,
+              "score": 0.9500571066068035
+            },
+            {
+              "lag": 218,
+              "score": 0.4446409097742468
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "shift": 57,
+            "ncc": 0.99993456245247,
+            "gain": 1.2493494584990446,
+            "rmse": 0.0020919634958292306,
+            "pairs": 430
+          },
+          {
+            "shift": 202,
+            "ncc": 0.8537538305751506,
+            "gain": 0.8232625040895629,
+            "rmse": 0.09521403766126979,
+            "pairs": 430
+          },
+          {
+            "shift": -88,
+            "ncc": 0.8087471782734327,
+            "gain": 1.092592262610429,
+            "rmse": 0.10967963844014583,
+            "pairs": 357
+          },
+          {
+            "shift": 347,
+            "ncc": 0.7500298495439595,
+            "gain": 0.6899964380084633,
+            "rmse": 0.12094822683517988,
+            "pairs": 430
+          },
+          {
+            "shift": -234,
+            "ncc": 0.6162916973590569,
+            "gain": 0.7291471232114587,
+            "rmse": 0.1444496372832239,
+            "pairs": 260
+          }
+        ],
+        "coverage": 0.9947222222222222,
+        "analysis_window": [
+          0,
+          627
+        ]
+      }
+    }
+  ],
+  "evaluation_report_url": "generated/evaluation/evaluation_report.json",
+  "period_offset_report_url": "generated/period_offset/period_offset_check.json",
+  "failure_ambiguous_delay_url": "generated/failure_ambiguous_delay/failure_ambiguous_delay.json",
+  "failure_long_plateau_url": "generated/failure_long_plateau/failure_long_plateau.json"
+}

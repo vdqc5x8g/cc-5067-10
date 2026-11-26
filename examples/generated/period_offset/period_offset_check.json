@@ -1,0 +1,154 @@
+{
+  "scenario": "强制选择偏移一个弦音宏观周期的副麦时延，并把该错误选择传给响度归一器",
+  "selection": {
+    "start": 333,
+    "end": 340,
+    "length": 8
+  },
+  "correct_alignment": {
+    "status": "identified",
+    "reason": "unique_correlation_peak",
+    "shift": 57,
+    "gain": 1.2495583695508365,
+    "certified": true,
+    "best": {
+      "shift": 57,
+      "ncc": 0.9999352690342426,
+      "gain": 1.2495583695508365,
+      "rmse": 0.002086858656212652,
+      "pairs": 518
+    },
+    "ambiguous_with": null,
+    "period": {
+      "period_samples": 145,
+      "score": 0.9532514714835564,
+      "candidates": [
+        {
+          "lag": 145,
+          "score": 0.9532514714835564
+        },
+        {
+          "lag": 73,
+          "score": 0.42374113396472884
+        }
+      ]
+    },
+    "candidates": [
+      {
+        "shift": 57,
+        "ncc": 0.9999352690342426,
+        "gain": 1.2495583695508365,
+        "rmse": 0.002086858656212652,
+        "pairs": 518
+      },
+      {
+        "shift": 202,
+        "ncc": 0.8613784571507509,
+        "gain": 0.8596154434916633,
+        "rmse": 0.09316691775305917,
+        "pairs": 518
+      },
+      {
+        "shift": -88,
+        "ncc": 0.8328762002244822,
+        "gain": 1.0791775535318295,
+        "rmse": 0.10316340236239063,
+        "pairs": 445
+      },
+      {
+        "shift": 347,
+        "ncc": 0.7540633591086364,
+        "gain": 0.7162223040442899,
+        "rmse": 0.12046566405873535,
+        "pairs": 518
+      },
+      {
+        "shift": -234,
+        "ncc": 0.6538163090828081,
+        "gain": 0.7178183238563858,
+        "rmse": 0.13929551006003396,
+        "pairs": 348
+      }
+    ],
+    "coverage": 0.9947222222222222,
+    "analysis_window": [
+      0,
+      756
+    ]
+  },
+  "wrong_alignment": {
+    "status": "forced_unverified",
+    "reason": "caller_forced_shift_peak_is_not_certified",
+    "shift": 202,
+    "gain": 0.886230272840277,
+    "certified": false,
+    "best": {
+      "shift": 202,
+      "ncc": 0.86762155449542,
+      "gain": 0.886230272840277,
+      "rmse": 0.09180339344483818,
+      "pairs": 583
+    },
+    "candidates": [
+      {
+        "shift": 202,
+        "ncc": 0.86762155449542,
+        "gain": 0.886230272840277,
+        "rmse": 0.09180339344483818,
+        "pairs": 583
+      }
+    ],
+    "coverage": 0.9812962962962963
+  },
+  "period_samples_added": 145,
+  "wrong_reconstructed_peak": 0.6048267236352216,
+  "true_peak_evaluation_only": 1.18,
+  "naive_normalizer": {
+    "policy": "naive_point_estimate",
+    "input_rms_db": -17.03172929164379,
+    "target_rms_db": -16.0,
+    "loudness_gain": 1.1261246490519232,
+    "gain": 1.1261246490519232,
+    "gain_db": 1.031729291643788,
+    "peak_estimate_used": 0.6048267236352216,
+    "believed_headroom_db": 4.191902078573155,
+    "certified_headroom_db": 4.191902078573155,
+    "uses_uncertain_peak_as_headroom": true,
+    "peak_certified": false,
+    "warning": "仅用于对照：把单点先验峰高误当成已证明的真实余量"
+  },
+  "guarded_normalizer": {
+    "policy": "guarded",
+    "status": "peak_uncertain_boost_blocked",
+    "input_rms_db": -17.03172929164379,
+    "target_rms_db": -16.0,
+    "loudness_gain": 1.1261246490519232,
+    "gain": 1.0,
+    "gain_db": 0.0,
+    "candidate_peak": 0.6048267236352216,
+    "speculative_peak_estimate": 0.6048267236352216,
+    "naive_believed_headroom_db": 4.191902078573155,
+    "certified_headroom_db": null,
+    "uses_uncertain_peak_as_headroom": false,
+    "peak_certified": false,
+    "requested_boost_db": 1.031729291643788,
+    "boost_blocked_db": 1.031729291643788,
+    "warning": "峰高未被观测或已认证副麦证明；禁止把先验峰高对应的余量用于正向增益"
+  },
+  "evaluation_of_naive_gain_on_truth": {
+    "gained_true_peak": 1.3288270858812694,
+    "samples_over_ceiling": 19,
+    "samples_over_digital_full_scale": 15,
+    "naive_mistook_estimate_for_real_margin": true
+  },
+  "checks": {
+    "guarded_did_not_certify_headroom": true,
+    "guarded_blocked_positive_makeup": true,
+    "guarded_did_not_use_unknown_peak_as_margin": true
+  },
+  "audio": {
+    "wrong_restored": "period_offset/wrong_period_alignment_restored.f32.wav",
+    "naive_master": "period_offset/naive_loudness_master.f32.wav",
+    "guarded_master": "period_offset/guarded_loudness_master.f32.wav"
+  }
+}
