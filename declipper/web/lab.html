@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>同观测不同原音 · 削顶教学台</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>同观测不同原音 · 削顶教学台</h1>
+      <p>两段不同的原始声在同一低阈值下产生逐样本相同的削顶观测；未削区原样保留供独立核对。
+         抬阈值只露出一个原本不可见的峰样本，盲比可排除的候选必须随之变化。</p>
+    </div>
+    <div class="entry">
+      <span>入口</span>
+      <code>python -m declipper panel → /lab</code>
+      <a href="/" style="color:var(--cyan);font-size:13px">← 返回母带试听面板</a>
+    </div>
+  </header>
+
+  <div id="errorBanner" class="error-banner" hidden></div>
+
+  <main class="layout lab-layout">
+    <section class="card controls-card">
+      <div class="card-title-row">
+        <h2>0. 可编辑合成源</h2>
+        <span class="pill">改参数会重新合成并重跑盲比</span>
+      </div>
+      <div class="lab-controls">
+        <fieldset>
+          <legend>谐音（主体）</legend>
+          <label>基频 Hz
+            <input id="fundamentalInput" type="number" step="1" min="40" max="1000" />
+          </label>
+          <label>主体幅度
+            <input id="bodyAmpInput" type="range" min="0.02" max="0.25" step="0.005" />
+          </label>
+          <label>主体衰减
+            <input id="bodyDecayInput" type="range" min="0.3" max="4" step="0.05" />
+          </label>
+          <label>谐波数
+            <input id="harmonicsInput" type="number" step="1" min="1" max="8" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>瞬态 / 峰形</legend>
+          <label>低峰核心峰值
+            <input id="lowPeakInput" type="number" step="0.01" min="0.66" max="1.0" />
+          </label>
+          <label>高峰核心峰值
+            <input id="highPeakInput" type="number" step="0.01" min="0.9" max="2.0" />
+          </label>
+          <label>暴露样值
+            <input id="revealValueInput" type="number" step="0.01" min="0.31" max="0.64" />
+          </label>
+          <label>诱饵（被排除）峰值
+            <input id="decoyInput" type="number" step="0.01" min="0.66" max="1.5" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>削顶阈值</legend>
+          <label>T（低，构造同观测）
+            <input id="clipThresholdInput" type="number" step="0.01" min="0.1" max="0.5" />
+          </label>
+          <label>T↑（抬升，刚好露出一个样本）
+            <input id="revealThresholdInput" type="number" step="0.01" min="0.5" max="0.9" />
+          </label>
+          <label>延拓先验强度
+            <input id="priorStrengthInput" type="range" min="0" max="1" step="0.02" value="0.34" />
+          </label>
+          <div class="file-status" style="align-self:end">成对练习音：<br/>观测 T 与 T↑ 已同时载入下方重建工具</div>
+        </fieldset>
+        <div class="lab-actions">
+          <button id="rebuildBtn" class="primary">重新合成并盲比</button>
+          <button id="resetBtn" class="ghost">恢复默认参数</button>
+          <button id="revealTruthBtn" class="ghost">揭示真值（仅事后核对）</button>
+        </div>
+      </div>
+      <p id="specStatus" class="file-status"></p>
+    </section>
+
+    <section class="card waveform-card">
+      <div class="card-title-row">
+        <h2>1. 观测与无法辨认的采样</h2>
+        <div class="toggle-row">
+          <button id="viewT0" class="seg active">阈值 T</button>
+          <button id="viewT1" class="seg">阈值 T↑</button>
+        </div>
+      </div>
+      <canvas id="obsCanvas" class="waveform" height="240"></canvas>
+      <p class="hint">蓝色平台=从该观测无法辨认的采样；黄色虚线=削波阈值；橙色竖线=抬阈值后新露出的那一个样本。
+         两段不同原音在此观测下逐样本一致。</p>
+      <div id="obsLegend" class="lab-legend"></div>
+    </section>
+
+    <aside class="card metrics-card">
+      <h2>可辨识性</h2>
+      <dl class="metrics-grid">
+        <div><dt>观测相同候选</dt><dd id="mSameCandidates">—</dd></div>
+        <div><dt>抬阈值后存活</dt><dd id="mSurvivors">—</dd></div>
+        <div><dt>被排除</dt><dd id="mExcluded" class="warn">—</dd></div>
+        <div><dt>新露出样本</dt><dd id="mReveal">—</dd></div>
+        <div><dt>小信号未受损区</dt><dd id="mIntact">—</dd></div>
+        <div><dt>集合严格缩小</dt><dd id="mShrank">—</dd></div>
+        <div><dt>整体检查</dt><dd id="mPassed">—</dd></div>
+        <div><dt>构造法实测</dt><dd id="mMethod">—</dd></div>
+      </dl>
+    </aside>
+
+    <section class="card result-card">
+      <div class="card-title-row">
+        <h2>2. 重建假设 · 再削顶 · 残差</h2>
+        <div id="hypButtons" class="candidate-buttons"></div>
+      </div>
+      <canvas id="hypCanvas" class="waveform result" height="260"></canvas>
+      <div class="audio-grid">
+        <div class="audio-box">
+          <h3>观测（削顶原声）</h3>
+          <audio id="obsAudio" controls preload="metadata"></audio>
+          <a id="downloadObs" download="observation.f32.wav">下载观测 WAV</a>
+        </div>
+        <div class="audio-box">
+          <h3 id="hypAudioTitle">重建假设</h3>
+          <audio id="hypAudio" controls preload="metadata"></audio>
+          <a id="downloadHyp" download="hypothesis.f32.wav">下载重建 WAV</a>
+        </div>
+        <div class="audio-box">
+          <h3>注入的猜测 x − clip(x)</h3>
+          <audio id="resAudio" controls preload="metadata"></audio>
+          <a id="downloadRes" download="injected.f32.wav">下载注入分量 WAV</a>
+          <p class="hint">这段就是再削顶会削掉、观测无法显示的部分；两种假设在此不同。</p>
+        </div>
+        <div class="audio-box">
+          <h3>两种假设之差（保守 − 延拓）</h3>
+          <audio id="diffAudio" controls preload="metadata"></audio>
+          <a id="downloadDiff" download="hypothesis-gap.f32.wav">下载假设差 WAV</a>
+          <div id="reclipStats" class="reclip-stats">—</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card reports-card">
+      <div class="card-title-row">
+        <h2>3. 候选集与真值（揭示后）</h2>
+        <span id="truthBadge" class="pill">真值未揭示</span>
+      </div>
+      <div id="candidateTable" class="report-output"></div>
+    </section>
+  </main>
+
+  <script src="/lab.js"></script>
+</body>
+</html>

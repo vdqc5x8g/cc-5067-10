@@ -12,11 +12,19 @@ from urllib.parse import parse_qs, unquote, urlparse
 
 from .audio import read_wav, read_wav_bytes, wav_bytes
 from .dual import align_secondary, forced_alignment
+from .lab import Spec, build_lab_pack, lab_payload
+from .lab.spec import MaterialSpecError
 from .normalize import normalize_samples
 from .pipeline import build_demo_pack, jsonable
 from .solver import ClippingRestoreError, restore_signal
 
 WEB_DIR = Path(__file__).parent / "web"
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+LAB_SPEC_PATH = _REPO_ROOT / "labs" / "analog" / "paired_clip.spec.json"
+
+
+def _lab_spec_path() -> Path:
+    return LAB_SPEC_PATH
 
 
 def _b64_wav(samples, sample_rate: int) -> str:
@@ -68,6 +76,17 @@ def create_handler(demo_dir: Path):
                     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
                     self._send_json(200, manifest)
                     return
+                if path == "/api/lab":
+                    # Serve the live lab payload from the editable spec.
+                    # Truth fields are included for display only and never
+                    # flow into the reconstruction engine.
+                    spec = Spec.from_json_file(_lab_spec_path())
+                    payload = lab_payload(spec)
+                    self._send_json(200, payload)
+                    return
+                if path == "/api/lab-spec":
+                    self._send_json(200, Spec.from_json_file(_lab_spec_path()).to_dict())
+                    return
                 if path == "/api/track-samples":
                     qs = parse_qs(parsed.query)
                     track_id = qs.get("track_id", [""])[0]
@@ -104,6 +123,12 @@ def create_handler(demo_dir: Path):
                 if path in {"/", "/index.html"}:
                     self._send_file(WEB_DIR / "index.html", "text/html; charset=utf-8")
                     return
+                if path in {"/lab", "/lab.html"}:
+                    self._send_file(WEB_DIR / "lab.html", "text/html; charset=utf-8")
+                    return
+                if path == "/lab.js":
+                    self._send_file(WEB_DIR / "lab.js", "text/javascript; charset=utf-8")
+                    return
                 if path == "/app.js":
                     self._send_file(WEB_DIR / "app.js", "text/javascript; charset=utf-8")
                     return
@@ -134,6 +159,18 @@ def create_handler(demo_dir: Path):
                         "sample_rate": audio.sample_rate,
                         "duration_seconds": audio.n / audio.sample_rate,
                     })
+                    return
+                if parsed.path == "/api/lab":
+                    spec_data = req.get("spec")
+                    if spec_data is None:
+                        spec = Spec.from_json_file(_lab_spec_path())
+                    else:
+                        spec = Spec.from_dict(spec_data)
+                    prior = float(req.get("prior_strength", 0.34))
+                    self._send_json(200, lab_payload(
+                        spec, prior_strength=prior,
+                        reveal_truth=bool(req.get("reveal_truth", False)),
+                    ))
                     return
                 if parsed.path != "/api/restore":
                     self._send_json(404, {"error": "NotFound"})

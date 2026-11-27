@@ -1,0 +1,22 @@
+{
+  "sample_rate": 8000,
+  "event_start": 240,
+  "event_end": 248,
+  "reveal_index": 240,
+  "intact_intervals": [
+    [
+      0,
+      239
+    ],
+    [
+      249,
+      1599
+    ]
+  ],
+  "policy": "reference 区间仅用于事后核对与评分；重建引擎不得读取",
+  "intact_displacement_T0_to_T1": {
+    "intact_sample_count": 1591,
+    "max_abs_change": 0.0,
+    "changed_sample_count": 0
+  }
+}

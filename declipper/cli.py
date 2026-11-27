@@ -8,6 +8,8 @@ from typing import Any, Dict, Optional
 
 from .audio import read_wav, write_wav
 from .dual import align_secondary, forced_alignment
+from .lab import Spec, build_lab_pack, build_material, threshold_lift_comparison
+from .lab.spec import MaterialSpecError
 from .pipeline import build_demo_pack, jsonable, run_period_offset_check
 from .server import run_server
 from .solver import ClippingRestoreError, restore_signal
@@ -131,6 +133,34 @@ def panel_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def lab_build_command(args: argparse.Namespace) -> int:
+    spec = Spec.from_json_file(args.spec)
+    report = build_lab_pack(args.out, spec)
+    print(json.dumps(jsonable({
+        "out": args.out,
+        "thresholds": report["thresholds"],
+        "event": report["event"],
+        "checks": report["checks"],
+        "passed": report["passed"],
+        "excluded_by_raising_threshold": report["exclusion_experiment"]["excluded_by_raising_threshold"],
+        "surviving_candidates": report["exclusion_experiment"]["surviving_candidates"],
+        "construction_method": {
+            "chosen": report["construction_method_measurement"]["chosen"],
+            "method_a_max_diff": report["construction_method_measurement"]["method_a_clip_known_dry_source"]["max_abs_diff"],
+            "method_b_max_diff": report["construction_method_measurement"]["method_b_construct_identical_observation"]["max_abs_diff"],
+        },
+    }), ensure_ascii=False, indent=2))
+    return 0 if report["passed"] else 3
+
+
+def lab_report_command(args: argparse.Namespace) -> int:
+    spec = Spec.from_json_file(args.spec)
+    material = build_material(spec)
+    report = threshold_lift_comparison(material)
+    print(json.dumps(jsonable(report), ensure_ascii=False, indent=2))
+    return 0 if report["passed"] else 3
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="declipper",
@@ -178,6 +208,16 @@ def build_parser() -> argparse.ArgumentParser:
     p_panel.add_argument("--demo-dir", default="examples/generated")
     p_panel.add_argument("--open-browser", action="store_true")
     p_panel.set_defaults(func=panel_command)
+
+    p_lab = sub.add_parser("lab", help="同观测不同原音的削顶教学音轨")
+    lab_sub = p_lab.add_subparsers(dest="lab_command", required=True)
+    p_lab_build = lab_sub.add_parser("build", help="按可编辑 spec 生成配对教学音轨与报告")
+    p_lab_build.add_argument("--spec", default="labs/analog/paired_clip.spec.json")
+    p_lab_build.add_argument("--out", default="examples/lab")
+    p_lab_build.set_defaults(func=lab_build_command)
+    p_lab_report = lab_sub.add_parser("report", help="只打印抬阈值盲比与排除结果（JSON）")
+    p_lab_report.add_argument("--spec", default="labs/analog/paired_clip.spec.json")
+    p_lab_report.set_defaults(func=lab_report_command)
     return parser
 
 
@@ -187,6 +227,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     try:
         return int(args.func(args))
     except ClippingRestoreError as exc:
+        print(json.dumps({"error": type(exc).__name__, "message": str(exc)}, ensure_ascii=False), file=sys.stderr)
+        return 2
+    except MaterialSpecError as exc:
         print(json.dumps({"error": type(exc).__name__, "message": str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 2
     except FileNotFoundError as exc:

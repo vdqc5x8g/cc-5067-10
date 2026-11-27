@@ -4,6 +4,28 @@
 
 本仓库只使用 Python 3.10+ 标准库；WAV 读写、FFT、最小二乘、投影梯度 QP、HTTP 服务和前端均无需安装第三方包。
 
+## 0. 同观测不同原音的削顶教学台（新增）
+
+除母带试听面板外，仓库新增一条独立的教学线：**两段不同的原始声在同一低阈值下产生逐样本相同的削顶观测**，
+未削区原样保留供独立核对；把阈值抬到刚好露出一个原本不可见的峰样本后，仍与观测一致的候选集合严格缩小，
+未受损的小信号段逐样本不动。
+
+```bash
+python3 -m declipper lab build --spec labs/analog/paired_clip.spec.json --out examples/lab
+python3 -m declipper lab report           # 抬阈值盲比与排除结果（JSON）
+python3 -m declipper panel --open-browser # 打开 /lab
+```
+
+- 方法选择**据实测**：`compare_construction_methods` 逐样本比较“直接削干声变体”与“构造核心样值”，
+  前者 1599/1600 点不同、后者 0 点不同，故采用构造法（详见 `labs/analog/README.md`）。
+- 可编辑合成源：`labs/analog/paired_clip.spec.json` 控制谐音、瞬态、削顶阈值、诱饵峰值，界面亦可实时重合成。
+- 真值隔离：`declipper.lab.engine.blind_reconstruct` 只接收观测数组；真值只在事后评估中使用，
+  并有运行时测试证明盲重建输出与隐藏真值无关。
+- 界面可切换**保守修补**与**先验延拓**假设，重削顶两份输出并试听注入分量与假设差，
+  标出无法辨认的采样，并显示抬阈值前后被排除的候选。
+
+详细说明见 [`labs/analog/README.md`](labs/analog/README.md)。
+
 ## 1. 图形入口（主交付）
 
 ```bash
@@ -196,7 +218,9 @@ python3 -m unittest discover -s tests -v
 - 唯一/周期歧义时延；
 - 守卫响度归一；
 - 长平台双候选与警告；
-- 非法阈值类型化错误。
+- 非法阈值类型化错误；
+- 教学台：spec 校验与拒绝、观测逐样本相同、恰好露出一个样本、未受损区零变化、
+  抬阈值严格缩小候选集、盲重建 API 无真值参数且输出与隐藏真值无关、真值默认不出现在 payload。
 
 ## 10. 仍然存在的限制
 

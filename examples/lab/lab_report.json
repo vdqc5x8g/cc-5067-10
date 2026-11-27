@@ -1,0 +1,703 @@
+{
+  "title": "同观测不同原音的削顶教学音轨",
+  "sample_rate": 8000,
+  "thresholds": {
+    "T0": 0.3,
+    "T1": 0.65
+  },
+  "event": {
+    "start": 240,
+    "end": 248,
+    "core_length": 9,
+    "reveal_index": 240
+  },
+  "construction": {
+    "identical_low_threshold_observation": true,
+    "candidates": [
+      {
+        "label": "low",
+        "role": "surviving"
+      },
+      {
+        "label": "high",
+        "role": "surviving"
+      },
+      {
+        "label": "decoy-1",
+        "role": "decoy"
+      },
+      {
+        "label": "decoy-2",
+        "role": "decoy"
+      },
+      {
+        "label": "decoy-3",
+        "role": "decoy"
+      }
+    ],
+    "intact_displacement": {
+      "intact_sample_count": 1591,
+      "max_abs_change": 0.0,
+      "changed_sample_count": 0
+    }
+  },
+  "blind_runs": {
+    "T0": {
+      "threshold": 0.3,
+      "run": {
+        "start": 240,
+        "end": 248,
+        "sign": 1,
+        "length": 9
+      },
+      "notes": [
+        "两种假设都满足观测；两者必须并列试听，不能把其一当作唯一真值"
+      ],
+      "hypotheses": [
+        {
+          "name": "conservative",
+          "peak": 0.8030010747304545,
+          "stop_reason": "relative_projected_gradient_tolerance",
+          "iterations": 129,
+          "constraint_violation": 0.0,
+          "reclip_max_error": 0.0,
+          "unclipped_max_error": 0.0,
+          "description": "保守最小斜率/曲率修补：只改动饱和区并取最小运动",
+          "peak_in_region": 0.8030010747304545,
+          "reclip_from_residual": 0.0,
+          "residual_mismatch_count": 0,
+          "feasible": true
+        },
+        {
+          "name": "continuation",
+          "peak": 0.35666339898751,
+          "stop_reason": "relative_projected_gradient_tolerance",
+          "iterations": 30,
+          "constraint_violation": 0.0,
+          "reclip_max_error": 0.0,
+          "unclipped_max_error": 0.0,
+          "description": "谐波先验延拓（权重 0.34，拟合 RMSE 0.02066）",
+          "peak_in_region": 0.35666339898751,
+          "reclip_from_residual": 0.0,
+          "residual_mismatch_count": 0,
+          "feasible": true
+        }
+      ],
+      "prior_envelope": {
+        "peak_range_observable": [
+          0.3,
+          null
+        ],
+        "peak_range_prior_envelope": [
+          0.3,
+          0.3
+        ],
+        "hard_prior_envelope_feasible": false,
+        "slew_bound": 0.05335671632109442,
+        "curvature_bound": 0.022764499265527715
+      },
+      "identifiable_from_observation_alone": false
+    },
+    "T1": {
+      "threshold": 0.65,
+      "run": {
+        "start": 241,
+        "end": 248,
+        "sign": 1,
+        "length": 8
+      },
+      "notes": [
+        "两种假设都满足观测；两者必须并列试听，不能把其一当作唯一真值"
+      ],
+      "hypotheses": [
+        {
+          "name": "conservative",
+          "peak": 1.5953254988900416,
+          "stop_reason": "relative_projected_gradient_tolerance",
+          "iterations": 205,
+          "constraint_violation": 0.0,
+          "reclip_max_error": 0.0,
+          "unclipped_max_error": 0.0,
+          "description": "保守最小斜率/曲率修补：只改动饱和区并取最小运动",
+          "peak_in_region": 1.5953254988900416,
+          "reclip_from_residual": 0.0,
+          "residual_mismatch_count": 0,
+          "feasible": true
+        },
+        {
+          "name": "continuation",
+          "peak": 0.7232960620510293,
+          "stop_reason": "relative_projected_gradient_tolerance",
+          "iterations": 29,
+          "constraint_violation": 0.0,
+          "reclip_max_error": 0.0,
+          "unclipped_max_error": 0.0,
+          "description": "谐波先验延拓（权重 0.34，拟合 RMSE 0.02492）",
+          "peak_in_region": 0.7232960620510293,
+          "reclip_from_residual": 0.0,
+          "residual_mismatch_count": 0,
+          "feasible": true
+        }
+      ],
+      "prior_envelope": {
+        "peak_range_observable": [
+          0.65,
+          null
+        ],
+        "peak_range_prior_envelope": [
+          0.65,
+          3.9071557449917615
+        ],
+        "hard_prior_envelope_feasible": true,
+        "slew_bound": 0.8392889362479404,
+        "curvature_bound": 0.9062808826919788
+      },
+      "identifiable_from_observation_alone": false
+    }
+  },
+  "exclusion_experiment": {
+    "low_threshold": 0.3,
+    "raised_threshold": 0.65,
+    "reveal_index": 240,
+    "candidate_set_low": [
+      "low",
+      "high",
+      "decoy-1",
+      "decoy-2",
+      "decoy-3"
+    ],
+    "candidate_set_raised": [
+      "low",
+      "high"
+    ],
+    "excluded_by_raising_threshold": [
+      "decoy-1",
+      "decoy-2",
+      "decoy-3"
+    ],
+    "set_shrank": true,
+    "exactly_one_newly_visible_sample": true,
+    "intact_region_max_change": 0.0,
+    "intact_region_sample_for_sample_unchanged": true,
+    "surviving_candidates": [
+      "low",
+      "high"
+    ],
+    "note": "抬阈值后仍不能区分集合内的存活原音；被排除的是在暴露样本上与原观测不一致的候选。小信号未受损区逐样本不变。"
+  },
+  "threshold_lift": {
+    "before": {
+      "level": "T0",
+      "threshold": 0.3,
+      "run": {
+        "start": 240,
+        "end": 248,
+        "sign": 1,
+        "length": 9
+      },
+      "notes": [
+        "两种假设都满足观测；两者必须并列试听，不能把其一当作唯一真值"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": {
+            "name": "conservative",
+            "peak": 0.8030010747304545,
+            "stop_reason": "relative_projected_gradient_tolerance",
+            "iterations": 129,
+            "constraint_violation": 0.0,
+            "reclip_max_error": 0.0,
+            "unclipped_max_error": 0.0,
+            "description": "保守最小斜率/曲率修补：只改动饱和区并取最小运动"
+          },
+          "truth_audit": [
+            {
+              "candidate": "low",
+              "role": "surviving",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.5,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "high",
+              "role": "surviving",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.6969989252695455,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "decoy-1",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.6499999999999999,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "decoy-2",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.7,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "decoy-3",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 1.0,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            }
+          ],
+          "outperforms_which": []
+        },
+        {
+          "hypothesis": {
+            "name": "continuation",
+            "peak": 0.35666339898751,
+            "stop_reason": "relative_projected_gradient_tolerance",
+            "iterations": 30,
+            "constraint_violation": 0.0,
+            "reclip_max_error": 0.0,
+            "unclipped_max_error": 0.0,
+            "description": "谐波先验延拓（权重 0.34，拟合 RMSE 0.02066）"
+          },
+          "truth_audit": [
+            {
+              "candidate": "low",
+              "role": "surviving",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.6499999999999999,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "high",
+              "role": "surviving",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 1.2,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "decoy-1",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.6499999999999999,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "decoy-2",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.7,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "decoy-3",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 1.0,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            }
+          ],
+          "outperforms_which": []
+        }
+      ],
+      "plateau_observation": [
+        0.3,
+        0.3,
+        0.3,
+        0.3,
+        0.3,
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "identifiable_from_observation_alone": false,
+      "truth_audit_is_evaluation_only": true
+    },
+    "after": {
+      "level": "T1",
+      "threshold": 0.65,
+      "run": {
+        "start": 241,
+        "end": 248,
+        "sign": 1,
+        "length": 8
+      },
+      "notes": [
+        "两种假设都满足观测；两者必须并列试听，不能把其一当作唯一真值"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": {
+            "name": "conservative",
+            "peak": 1.5953254988900416,
+            "stop_reason": "relative_projected_gradient_tolerance",
+            "iterations": 205,
+            "constraint_violation": 0.0,
+            "reclip_max_error": 0.0,
+            "unclipped_max_error": 0.0,
+            "description": "保守最小斜率/曲率修补：只改动饱和区并取最小运动"
+          },
+          "truth_audit": [
+            {
+              "candidate": "low",
+              "role": "surviving",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.6453254988900416,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "high",
+              "role": "surviving",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.4175485249968146,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "decoy-1",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.6453254988900416,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": false
+            },
+            {
+              "candidate": "decoy-2",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.6453254988900416,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": false
+            },
+            {
+              "candidate": "decoy-3",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.75,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": false
+            }
+          ],
+          "outperforms_which": []
+        },
+        {
+          "hypothesis": {
+            "name": "continuation",
+            "peak": 0.7232960620510293,
+            "stop_reason": "relative_projected_gradient_tolerance",
+            "iterations": 29,
+            "constraint_violation": 0.0,
+            "reclip_max_error": 0.0,
+            "unclipped_max_error": 0.0,
+            "description": "谐波先验延拓（权重 0.34，拟合 RMSE 0.02492）"
+          },
+          "truth_audit": [
+            {
+              "candidate": "low",
+              "role": "surviving",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.29999999999999993,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "high",
+              "role": "surviving",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.85,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": true
+            },
+            {
+              "candidate": "decoy-1",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.3999999999999999,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": false
+            },
+            {
+              "candidate": "decoy-2",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.44999999999999996,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": false
+            },
+            {
+              "candidate": "decoy-3",
+              "role": "decoy",
+              "reclip_max_error": 0.0,
+              "peak_abs_error_all": 0.75,
+              "intact_max_abs_error": 0.0,
+              "consistent_with_observation": false
+            }
+          ],
+          "outperforms_which": []
+        }
+      ],
+      "plateau_observation": [
+        0.65,
+        0.65,
+        0.65,
+        0.65,
+        0.65,
+        0.65,
+        0.65,
+        0.65
+      ],
+      "identifiable_from_observation_alone": false,
+      "truth_audit_is_evaluation_only": true
+    },
+    "exclusion": {
+      "low_threshold": 0.3,
+      "raised_threshold": 0.65,
+      "reveal_index": 240,
+      "candidate_set_low": [
+        "low",
+        "high",
+        "decoy-1",
+        "decoy-2",
+        "decoy-3"
+      ],
+      "candidate_set_raised": [
+        "low",
+        "high"
+      ],
+      "excluded_by_raising_threshold": [
+        "decoy-1",
+        "decoy-2",
+        "decoy-3"
+      ],
+      "set_shrank": true,
+      "exactly_one_newly_visible_sample": true,
+      "intact_region_max_change": 0.0,
+      "intact_region_sample_for_sample_unchanged": true,
+      "surviving_candidates": [
+        "low",
+        "high"
+      ],
+      "note": "抬阈值后仍不能区分集合内的存活原音；被排除的是在暴露样本上与原观测不一致的候选。小信号未受损区逐样本不变。"
+    },
+    "checks": {
+      "candidate_set_strictly_shrank": true,
+      "exactly_one_sample_newly_revealed": true,
+      "small_signal_unchanged_sample_for_sample": true,
+      "reconstruction_sees_only_observation": true
+    },
+    "passed": true
+  },
+  "construction_method_measurement": {
+    "threshold": 0.3,
+    "sample_rate": 8000,
+    "method_a_clip_known_dry_source": {
+      "max_abs_diff": 0.2018894105850173,
+      "differing_sample_count": 1599,
+      "sample_count": 1600
+    },
+    "method_b_construct_identical_observation": {
+      "max_abs_diff": 0.0,
+      "differing_sample_count": 0,
+      "sample_count": 1600,
+      "candidate_count": 5
+    },
+    "method_a_yields_identical_observation": false,
+    "method_b_yields_identical_observation": true,
+    "chosen": "construct_identical_observation",
+    "rationale": "实测：直接削同一干声的不同变体在同一阈值下仍产生逐样本不同的观测，峰值区与未削区都无法保证一致；显式构造核心样值可在削顶后得到逐样本相同的观测。故采用构造法（B）。"
+  },
+  "truth_isolation": {
+    "engine_api_accepts": [
+      "observation",
+      "sample_rate",
+      "threshold",
+      "start",
+      "end",
+      "prior_strength"
+    ],
+    "engine_api_rejects": [
+      "truth",
+      "candidate",
+      "clean"
+    ],
+    "truth_directory": "truth/",
+    "observation_directory": "observation/",
+    "generator_proof": "build_material 用 clip(original) 构造观测；engine.blind_reconstruct 只接收 observation 数组"
+  },
+  "audio": {
+    "observations": {
+      "T0": "observation/T0.observation.f32.wav",
+      "T1": "observation/T1.observation.f32.wav"
+    },
+    "truth": {
+      "low": "truth/low.truth.f32.wav",
+      "high": "truth/high.truth.f32.wav",
+      "decoy-1": "truth/decoy-1.truth.f32.wav",
+      "decoy-2": "truth/decoy-2.truth.f32.wav",
+      "decoy-3": "truth/decoy-3.truth.f32.wav"
+    },
+    "blind": {
+      "T0.conservative": "blind/T0.conservative.f32.wav",
+      "T0.continuation": "blind/T0.continuation.f32.wav",
+      "T1.conservative": "blind/T1.conservative.f32.wav",
+      "T1.continuation": "blind/T1.continuation.f32.wav"
+    }
+  },
+  "compare": {
+    "level": "T0",
+    "threshold": 0.3,
+    "run": {
+      "start": 240,
+      "end": 248,
+      "sign": 1,
+      "length": 9
+    },
+    "notes": [
+      "两种假设都满足观测；两者必须并列试听，不能把其一当作唯一真值"
+    ],
+    "hypotheses": [
+      {
+        "hypothesis": {
+          "name": "conservative",
+          "peak": 0.8030010747304545,
+          "stop_reason": "relative_projected_gradient_tolerance",
+          "iterations": 129,
+          "constraint_violation": 0.0,
+          "reclip_max_error": 0.0,
+          "unclipped_max_error": 0.0,
+          "description": "保守最小斜率/曲率修补：只改动饱和区并取最小运动"
+        },
+        "truth_audit": [
+          {
+            "candidate": "low",
+            "role": "surviving",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 0.5,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          },
+          {
+            "candidate": "high",
+            "role": "surviving",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 0.6969989252695455,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          },
+          {
+            "candidate": "decoy-1",
+            "role": "decoy",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 0.6499999999999999,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          },
+          {
+            "candidate": "decoy-2",
+            "role": "decoy",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 0.7,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          },
+          {
+            "candidate": "decoy-3",
+            "role": "decoy",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 1.0,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          }
+        ],
+        "outperforms_which": []
+      },
+      {
+        "hypothesis": {
+          "name": "continuation",
+          "peak": 0.35666339898751,
+          "stop_reason": "relative_projected_gradient_tolerance",
+          "iterations": 30,
+          "constraint_violation": 0.0,
+          "reclip_max_error": 0.0,
+          "unclipped_max_error": 0.0,
+          "description": "谐波先验延拓（权重 0.34，拟合 RMSE 0.02066）"
+        },
+        "truth_audit": [
+          {
+            "candidate": "low",
+            "role": "surviving",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 0.6499999999999999,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          },
+          {
+            "candidate": "high",
+            "role": "surviving",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 1.2,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          },
+          {
+            "candidate": "decoy-1",
+            "role": "decoy",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 0.6499999999999999,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          },
+          {
+            "candidate": "decoy-2",
+            "role": "decoy",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 0.7,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          },
+          {
+            "candidate": "decoy-3",
+            "role": "decoy",
+            "reclip_max_error": 0.0,
+            "peak_abs_error_all": 1.0,
+            "intact_max_abs_error": 0.0,
+            "consistent_with_observation": true
+          }
+        ],
+        "outperforms_which": []
+      }
+    ],
+    "plateau_observation": [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+    ],
+    "identifiable_from_observation_alone": false,
+    "truth_audit_is_evaluation_only": true
+  },
+  "checks": {
+    "candidate_set_strictly_shrank": true,
+    "exactly_one_sample_newly_revealed": true,
+    "small_signal_unchanged_sample_for_sample": true,
+    "reconstruction_sees_only_observation": true
+  },
+  "passed": true
+}
